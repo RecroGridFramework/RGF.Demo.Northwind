@@ -1,0 +1,53 @@
+{
+  "TypeDef": "Recrovit.RecroGridFramework.CF_RecroDict_Str, Recrovit.RecroGrid",
+  "Data": [
+    {
+      "Scope": "Employee.Tooltip",
+      "StringId": "FirstName",
+      "Str_eng": "First Name",
+      "Str_hun": "Keresztnév"
+    },
+    {
+      "Scope": "Employee.Tooltip",
+      "StringId": "LastName",
+      "Str_eng": "Last Name",
+      "Str_hun": "Vezetéknév"
+    },
+    {
+      "Scope": "Entity.UI.Categories_1",
+      "StringId": "_EntityName",
+      "Str_eng": null,
+      "Str_hun": "Categories"
+    },
+    {
+      "Scope": "Entity.UI.Categories_1",
+      "StringId": "CategoryName",
+      "Str_eng": "Category Name",
+      "Str_hun": "Category Name"
+    },
+    {
+      "Scope": "Entity.UI.Categories_1",
+      "StringId": "Description",
+      "Str_eng": null,
+      "Str_hun": "Description"
+    },
+    {
+      "Scope": "Entity.UI.Categories_1",
+      "StringId": "Picture",
+      "Str_eng": null,
+      "Str_hun": "Picture"
+    },
+    {
+      "Scope": "RecroDictDemo",
+      "StringId": "A1",
+      "Str_eng": "<div><span style=\"color: rgb(204, 51, 51);\"><strong>Identity: {0}</strong></span></div>",
+      "Str_hun": "<div><span style=\"color: rgb(204, 51, 51);\"><strong>Azonosító: {0}</strong></span></div>"
+    },
+    {
+      "Scope": "RecroDictDemo",
+      "StringId": "A2",
+      "Str_eng": "<div><span style=\"color: rgb(204, 51, 51);\"><strong>RecroDict Form demo</strong></span></div>",
+      "Str_hun": "<div><span style=\"color: rgb(204, 51, 51);\"><strong>RecroDict Form demo</strong></span></div>"
+    }
+  ]
+}
