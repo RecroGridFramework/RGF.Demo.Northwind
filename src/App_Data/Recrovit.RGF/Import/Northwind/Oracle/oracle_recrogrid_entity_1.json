@@ -3916,8 +3916,8 @@
           "Readable": true,
           "Editable": true,
           "FormType": 1,
-          "FormTab": 1,
-          "FormPos": 3,
+          "FormTab": 0,
+          "FormPos": 0,
           "EntityBase": 10014,
           "MigrEntityBaseName": "Customers"
         },
