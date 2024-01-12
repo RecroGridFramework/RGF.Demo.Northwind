@@ -1,22 +1,23 @@
 /*rg_product_1 => RG_Product (v1)*/
 div.rg-details.rg_product_1 { width: 713px; }
-div.rg-details.rg_product_1 div.ui-dialog-content div.rg-tabs { height: 355px; }
-/*rg-col-10042 => Category:*/
-.rg_product_1 div.rg-entity[name="rg-col-10042"] > div.rg-property[name="rg-col-10042"] .rg-label { text-align: center; min-width: 150px; }
-/*rg-col-10009 => Discontinued*/
-.rg_product_1 div.rg-property[name="rg-col-10009"] .rg-label { text-align: center; min-width: 150px; }
+div.rg-details.rg_product_1 div.ui-dialog-content div.rg-tabs { height: 361px; }
 /*rg-col-10007 => ProductID:*/
 .rg_product_1 div.rg-property[name="rg-col-10007"] .rg-label { text-align: center; min-width: 150px; }
 /*rg-col-10010 => ProductName:*/
 .rg_product_1 div.rg-property[name="rg-col-10010"] .rg-label { text-align: center; min-width: 150px; }
+.rg_product_1 div.rg-property[name="rg-col-10010"] .rg-cru { width: 300px; }
+/*rg-col-10041 => Category:*/
+.rg_product_1 div.rg-entity[name="rg-col-10041"] > div.rg-property[name="rg-col-10041"] .rg-label { text-align: center; min-width: 150px; }
+/*rg-col-10014 => UnitPrice:*/
+.rg_product_1 div.rg-property[name="rg-col-10014"] .rg-label { text-align: center; min-width: 150px; }
 /*rg-col-10011 => QuantityPerUnit:*/
 .rg_product_1 div.rg-property[name="rg-col-10011"] .rg-label { text-align: center; min-width: 150px; }
+/*rg-col-10009 => Discontinued*/
+.rg_product_1 div.rg-property[name="rg-col-10009"] .rg-label { text-align: center; min-width: 150px; }
 /*rg-col-10012 => ReorderLevel:*/
 .rg_product_1 div.rg-property[name="rg-col-10012"] .rg-label { text-align: center; min-width: 150px; }
 /*rg-col-10022 => SupplierID:*/
 .rg_product_1 div.rg-entity[name="rg-col-10022"] > div.rg-property[name="rg-col-10022"] .rg-label { text-align: center; min-width: 150px; }
-/*rg-col-10014 => UnitPrice:*/
-.rg_product_1 div.rg-property[name="rg-col-10014"] .rg-label { text-align: center; min-width: 150px; }
 /*rg-col-10015 => UnitsInStock:*/
 .rg_product_1 div.rg-property[name="rg-col-10015"] .rg-label { text-align: center; min-width: 150px; }
 /*rg-col-10016 => UnitsOnOrder:*/
