@@ -22,7 +22,7 @@
     <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.4" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.22" />
     <PackageReference Include="Oracle.EntityFrameworkCore" Version="6.21.110" />
-    <PackageReference Include="Recrovit.RecroGridFramework.Core" Version="6.2.0" />
+    <PackageReference Include="Recrovit.RecroGridFramework.Core" Version="6.3.0" />
   </ItemGroup>
   
 </Project>
