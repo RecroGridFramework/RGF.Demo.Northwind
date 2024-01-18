@@ -1,0 +1,11 @@
+{
+  "TypeDef": "Recrovit.RecroGridFramework.CF_RecroDict_Str, Recrovit.RecroGrid",
+  "Data": [
+    {
+      "Scope": "Entity.UI.Categories_1",
+      "StringId": "_EntityName",
+      "Str_eng": "Categories",
+      "Str_hun": "Kategóriák"
+    }
+  ]
+}
