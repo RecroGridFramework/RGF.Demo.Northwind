@@ -16,8 +16,7 @@
     {
       "Scope": "Entity.UI.Categories_1",
       "StringId": "_EntityName",
-      "Str_eng": null,
-      "Str_hun": "Categories"
+      "Str_eng": "Categories"
     },
     {
       "Scope": "Entity.UI.Categories_1",
@@ -28,14 +27,17 @@
     {
       "Scope": "Entity.UI.Categories_1",
       "StringId": "Description",
-      "Str_eng": null,
-      "Str_hun": "Description"
+      "Str_eng": "Description"
     },
     {
       "Scope": "Entity.UI.Categories_1",
       "StringId": "Picture",
-      "Str_eng": null,
-      "Str_hun": "Picture"
+      "Str_eng": "Picture"
+    },
+    {
+      "Scope": "Predefined.UserFilter",
+      "StringId": "RGO_PredefFilter_10001",
+      "Str_eng": "cat=beve"
     },
     {
       "Scope": "RecroDictDemo",
