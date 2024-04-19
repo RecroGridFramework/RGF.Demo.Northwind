@@ -16,7 +16,8 @@
     {
       "Scope": "Entity.UI.Categories_1",
       "StringId": "_EntityName",
-      "Str_eng": "Categories"
+      "Str_eng": "Categories",
+      "Str_hun": "Kategóriák"
     },
     {
       "Scope": "Entity.UI.Categories_1",
