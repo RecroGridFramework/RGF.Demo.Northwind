@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RGF.Demo.Northwind.Common\RGF.Demo.Northwind.Common.csproj" />
+    <ProjectReference Include="..\..\RGF.Demo.Northwind.Common\src\RGF.Demo.Northwind.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
