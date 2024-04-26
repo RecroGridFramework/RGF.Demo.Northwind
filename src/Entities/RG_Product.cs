@@ -1,12 +1,13 @@
 ﻿using Recrovit.RecroGridFramework;
 using Recrovit.RecroGridFramework.Abstraction.Models;
+using Recrovit.RecroGridFramework.Core;
 using Recrovit.RecroGridFramework.Extensions;
 using Recrovit.RecroGridFramework.Security;
 using RGF.Demo.Northwind.Models;
 
 namespace RGF.Demo.Northwind.Entities;
 
-public partial class RG_Product : RecroGridDBC<Products>
+public partial class RG_Product : RgfCore<Products>
 {
     public RG_Product(IRecroGridContext rgContext) : base(rgContext) { }
 
