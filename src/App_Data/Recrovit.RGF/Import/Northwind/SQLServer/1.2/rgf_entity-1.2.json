@@ -5,7 +5,7 @@
       "EntityId": 10010,
       "EntityName": "Order_Details",
       "MigrRename": "RG_OrderDetails",
-      "TypeDefinition": "RGF.API.Entities.RG_OrderDetails, DefaultAssemblyName",
+      "TypeDefinition": "RGF.Demo.Northwind.Entities.RG_OrderDetails, DefaultAssemblyName",
       "EntityVersion": "1",
       "Category": 2
     }
