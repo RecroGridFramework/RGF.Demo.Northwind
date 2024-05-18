@@ -1,0 +1,261 @@
+{
+  "TypeDef": "Recrovit.RecroGridFramework.CF_RecroSec_PermissionType, Recrovit.RecroGrid",
+  "Data": [
+    {
+      "PermissionId": 1,
+      "PermissionName": "Create",
+      "RecroSec_Permission": [
+        {
+          "PermissionGroupId": 13,
+          "PermissionId": 1,
+          "Permission": true,
+          "RecroSec_PermissionGroup": {
+            "PermissionGroupId": 13,
+            "PermissionGroupName": "rsexport.Edit",
+            "RecroSec_OPPG": [
+              {
+                "ObjectPermissionId": 5,
+                "PermissionGroupId": 13,
+                "Inheritable": false,
+                "Priority": 0,
+                "RecroSec_ObjectPermission": {
+                  "ObjectPermissionId": 5,
+                  "ObjectName": "rsexport",
+                  "Inheritance": false
+                }
+              }
+            ],
+            "RecroSec_RolePermission": [
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PermissionId": 2,
+      "PermissionName": "Read",
+      "RecroSec_Permission": [
+        {
+          "PermissionGroupId": 12,
+          "PermissionId": 2,
+          "Permission": true,
+          "RecroSec_PermissionGroup": {
+            "PermissionGroupId": 12,
+            "PermissionGroupName": "rsexport.Read",
+            "RecroSec_OPPG": [
+              {
+                "ObjectPermissionId": 5,
+                "PermissionGroupId": 12,
+                "Inheritable": false,
+                "Priority": 0,
+                "RecroSec_ObjectPermission": {
+                  "ObjectPermissionId": 5,
+                  "ObjectName": "rsexport",
+                  "Inheritance": false
+                }
+              }
+            ],
+            "RecroSec_RolePermission": [
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PermissionId": 4,
+      "PermissionName": "Update",
+      "RecroSec_Permission": [
+        {
+          "PermissionGroupId": 13,
+          "PermissionId": 4,
+          "Permission": true,
+          "RecroSec_PermissionGroup": {
+            "PermissionGroupId": 13,
+            "PermissionGroupName": "rsexport.Edit",
+            "RecroSec_OPPG": [
+              {
+                "ObjectPermissionId": 5,
+                "PermissionGroupId": 13,
+                "Inheritable": false,
+                "Priority": 0,
+                "RecroSec_ObjectPermission": {
+                  "ObjectPermissionId": 5,
+                  "ObjectName": "rsexport",
+                  "Inheritance": false
+                }
+              }
+            ],
+            "RecroSec_RolePermission": [
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PermissionId": 8,
+      "PermissionName": "Delete",
+      "RecroSec_Permission": [
+        {
+          "PermissionGroupId": 14,
+          "PermissionId": 8,
+          "Permission": true,
+          "RecroSec_PermissionGroup": {
+            "PermissionGroupId": 14,
+            "PermissionGroupName": "rsexport.Delete",
+            "RecroSec_OPPG": [
+              {
+                "ObjectPermissionId": 5,
+                "PermissionGroupId": 14,
+                "Inheritable": false,
+                "Priority": 0,
+                "RecroSec_ObjectPermission": {
+                  "ObjectPermissionId": 5,
+                  "ObjectName": "rsexport",
+                  "Inheritance": false
+                }
+              }
+            ],
+            "RecroSec_RolePermission": [
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PermissionId": 1001,
+      "PermissionName": "RGF.QueryString",
+      "RecroSec_Permission": [
+        {
+          "PermissionGroupId": 5,
+          "PermissionId": 1001,
+          "Permission": true,
+          "RecroSec_PermissionGroup": {
+            "PermissionGroupId": 5,
+            "PermissionGroupName": "RGF.PowerUser",
+            "RecroSec_OPPG": [
+              {
+                "ObjectPermissionId": 5,
+                "PermissionGroupId": 5,
+                "Inheritable": false,
+                "Priority": 0,
+                "RecroSec_ObjectPermission": {
+                  "ObjectPermissionId": 5,
+                  "ObjectName": "rsexport",
+                  "Inheritance": false
+                }
+              }
+            ],
+            "RecroSec_RolePermission": [
+              {
+                "RoleId": "3",
+                "PermissionGroupId": 5
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PermissionId": 1002,
+      "PermissionName": "RGF.QuickWatch",
+      "RecroSec_Permission": [
+        {
+          "PermissionGroupId": 5,
+          "PermissionId": 1002,
+          "Permission": true,
+          "RecroSec_PermissionGroup": {
+            "PermissionGroupId": 5,
+            "PermissionGroupName": "RGF.PowerUser",
+            "RecroSec_OPPG": [
+              {
+                "ObjectPermissionId": 5,
+                "PermissionGroupId": 5,
+                "Inheritable": false,
+                "Priority": 0,
+                "RecroSec_ObjectPermission": {
+                  "ObjectPermissionId": 5,
+                  "ObjectName": "rsexport",
+                  "Inheritance": false
+                }
+              }
+            ],
+            "RecroSec_RolePermission": [
+              {
+                "RoleId": "3",
+                "PermissionGroupId": 5
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PermissionId": 1003,
+      "PermissionName": "RGF.PredefFilterAdmin",
+      "RecroSec_Permission": [
+        {
+          "PermissionGroupId": 5,
+          "PermissionId": 1003,
+          "Permission": true,
+          "RecroSec_PermissionGroup": {
+            "PermissionGroupId": 5,
+            "PermissionGroupName": "RGF.PowerUser",
+            "RecroSec_OPPG": [
+              {
+                "ObjectPermissionId": 5,
+                "PermissionGroupId": 5,
+                "Inheritable": false,
+                "Priority": 0,
+                "RecroSec_ObjectPermission": {
+                  "ObjectPermissionId": 5,
+                  "ObjectName": "rsexport",
+                  "Inheritance": false
+                }
+              }
+            ],
+            "RecroSec_RolePermission": [
+              {
+                "RoleId": "3",
+                "PermissionGroupId": 5
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PermissionId": 1004,
+      "PermissionName": "RGF.Export",
+      "RecroSec_Permission": [
+        {
+          "PermissionGroupId": 6,
+          "PermissionId": 1004,
+          "Permission": true,
+          "RecroSec_PermissionGroup": {
+            "PermissionGroupId": 6,
+            "PermissionGroupName": "RGF.Export",
+            "RecroSec_OPPG": [
+              {
+                "ObjectPermissionId": 5,
+                "PermissionGroupId": 6,
+                "Inheritable": false,
+                "Priority": 0,
+                "RecroSec_ObjectPermission": {
+                  "ObjectPermissionId": 5,
+                  "ObjectName": "rsexport",
+                  "Inheritance": false
+                }
+              }
+            ],
+            "RecroSec_RolePermission": [
+              {
+                "RoleId": "4",
+                "PermissionGroupId": 6
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

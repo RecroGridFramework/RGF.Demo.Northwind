@@ -28,33 +28,34 @@ public partial class BaseDbContext : NorthwindDbContext
             switch (dbType)
             {
                 case DBTypeEnum.SQLServer:
-                    optionsBuilder.UseSqlServer(RGDataContext.DefaultConnectionString, opts =>
+                    optionsBuilder.UseSqlServer(RGDataContext.DefaultConnectionString, options =>
                     {
                         if (RGDataContext.SQLTimeout != -1)
                         {
-                            opts.CommandTimeout(RGDataContext.SQLTimeout);
+                            options.CommandTimeout(RGDataContext.SQLTimeout);
                         }
                     });
                     break;
 #if POSTGRESQL
                 case DBTypeEnum.PostgreSQL:
-                    optionsBuilder.UseNpgsql(RGDataContext.DefaultConnectionString, opts =>
+                    optionsBuilder.UseNpgsql(RGDataContext.DefaultConnectionString, options =>
                     {
                         if (RGDataContext.SQLTimeout != -1)
                         {
-                            opts.CommandTimeout(RGDataContext.SQLTimeout);
+                            options.CommandTimeout(RGDataContext.SQLTimeout);
                         }
                     });
                     break;
 #endif
 #if ORACLE
                 case DBTypeEnum.Oracle:
-                    optionsBuilder.UseOracle(RGDataContext.DefaultConnectionString, opts =>
+                    optionsBuilder.UseOracle(RGDataContext.DefaultConnectionString, options =>
                     {
                         if (RGDataContext.SQLTimeout != -1)
                         {
-                            opts.CommandTimeout(RGDataContext.SQLTimeout);
+                            options.CommandTimeout(RGDataContext.SQLTimeout);
                         }
+                        options.UseOracleSQLCompatibility(OracleSQLCompatibility.DatabaseVersion21);
                     });
                     break;
 #endif
@@ -118,29 +119,32 @@ public static class WebApplicationBuilderExtensions
 #if ORACLE
             case DBTypeEnum.Oracle:
                 //services.AddDbContext<BaseDbContext>(options => options.UseOracle(RGDataContext.DefaultConnectionString));
-                services.AddDbContextPool<BaseDbContextPool>(options => options.UseOracle(RGDataContext.DefaultConnectionString));
+                services.AddDbContextPool<BaseDbContextPool>(options => options.UseOracle(RGDataContext.DefaultConnectionString,
+                    o => o.UseOracleSQLCompatibility(OracleSQLCompatibility.DatabaseVersion21)));
 
                 RecroGridConfig.OnConfiguringDbContext =
                     delegate (DbContextOptionsBuilder optionsBuilder, System.Data.Common.DbConnection connection, string connectionString)
                     {
                         if (connection != null)
                         {
-                            optionsBuilder.UseOracle(connection, opts =>
+                            optionsBuilder.UseOracle(connection, options =>
                             {
                                 if (RGDataContext.SQLTimeout != -1)
                                 {
-                                    opts.CommandTimeout(RGDataContext.SQLTimeout);
+                                    options.CommandTimeout(RGDataContext.SQLTimeout);
                                 }
+                                options.UseOracleSQLCompatibility(OracleSQLCompatibility.DatabaseVersion21);
                             });
                         }
                         else
                         {
-                            optionsBuilder.UseOracle(connectionString, opts =>
+                            optionsBuilder.UseOracle(connectionString, options =>
                             {
                                 if (RGDataContext.SQLTimeout != -1)
                                 {
-                                    opts.CommandTimeout(RGDataContext.SQLTimeout);
+                                    options.CommandTimeout(RGDataContext.SQLTimeout);
                                 }
+                                options.UseOracleSQLCompatibility(OracleSQLCompatibility.DatabaseVersion21);
                             });
                         }
                     };

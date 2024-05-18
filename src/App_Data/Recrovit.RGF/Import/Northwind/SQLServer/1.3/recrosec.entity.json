@@ -1,0 +1,58 @@
+{
+  "TypeDef": "Recrovit.RecroGridFramework.CF_RecroGrid_Entity, Recrovit.RecroGrid",
+  "Data": [
+    {
+      "EntityId": 10013,
+      "EntityName": "Customers",
+      "EntityVersion": "1",
+      "TypeDefinition": "Recrovit.RecroGridFramework.RecroGridDBC`1, Recrovit.RecroGrid,DefaultNamespace.Customers, DefaultAssemblyName",
+      "Category": 1,
+      "RecroGrid_Options": [
+        {
+          "Id": 550,
+          "EntityId": 10013,
+          "OptionKey": "RGO_RecroSec",
+          "OptionValue": "rsexport",
+          "IsClientParam": false
+        },
+        {
+          "Id": 553,
+          "EntityId": 10013,
+          "OptionKey": "RGO_RecroSecCol",
+          "OptionValue": "false",
+          "IsClientParam": false
+        }
+      ]
+    },
+    {
+      "EntityId": 10014,
+      "EntityName": "Shippers",
+      "EntityVersion": "1",
+      "TypeDefinition": "Recrovit.RecroGridFramework.RecroGridDBC`1, Recrovit.RecroGrid,DefaultNamespace.Shippers, DefaultAssemblyName",
+      "Category": 1,
+      "RecroGrid_Options": [
+        {
+          "Id": 549,
+          "EntityId": 10014,
+          "OptionKey": "RGO_RecroSec",
+          "OptionValue": "rsexport",
+          "IsClientParam": false
+        },
+        {
+          "Id": 551,
+          "EntityId": 10014,
+          "OptionKey": "RGO_RecroSecCol",
+          "OptionValue": "true",
+          "IsClientParam": false
+        },
+        {
+          "Id": 552,
+          "EntityId": 10014,
+          "OptionKey": "RGO_RecroSecLevel",
+          "OptionValue": "row",
+          "IsClientParam": false
+        }
+      ]
+    }
+  ]
+}
