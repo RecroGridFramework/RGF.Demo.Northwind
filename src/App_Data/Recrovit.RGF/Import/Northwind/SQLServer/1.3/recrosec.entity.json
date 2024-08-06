@@ -83,9 +83,9 @@
     },
     {
       "EntityId": 10001,
-      "EntityName": "Categories",
+      "EntityName": "RG_Category",
       "EntityVersion": "1",
-      "TypeDefinition": "Recrovit.RecroGridFramework.RecroGridDBC`1, Recrovit.RecroGrid,DefaultNamespace.Categories, DefaultAssemblyName",
+      "TypeDefinition": "RGF.Demo.Northwind.Entities.RG_Category, DefaultAssemblyName",
       "Category": 1,
       "RecroGrid_Options": [
         {

@@ -3,9 +3,9 @@
   "Data": [
     {
       "EntityId": 10001,
-      "EntityName": "Categories",
+      "EntityName": "RG_Category",
       "EntityVersion": "1",
-      "TypeDefinition": "Recrovit.RecroGridFramework.RecroGridDBC`1, Recrovit.RecroGrid,DefaultNamespace.Categories, DefaultAssemblyName",
+      "TypeDefinition": "RGF.Demo.Northwind.Entities.RG_Category, DefaultAssemblyName",
       "Category": 1,
       "Title": "<%%>Entity.UI.Categories_1._EntityName",
       "RecroGrid_Options": [
@@ -32,7 +32,7 @@
           "FormType": 1,
           "FormTab": 1,
           "FormGroup": 0,
-          "FormPos": 3
+          "FormPos": 5
         },
         {
           "PropertyId": 10002,
@@ -49,7 +49,7 @@
           "FormType": 1,
           "FormTab": 1,
           "FormGroup": 0,
-          "FormPos": 4,
+          "FormPos": 6,
           "RecroGrid_Options": [
             {
               "Id": 262,
@@ -84,7 +84,7 @@
           "FormType": 2,
           "FormTab": 1,
           "FormGroup": 0,
-          "FormPos": 5,
+          "FormPos": 7,
           "RecroGrid_Options": [
             {
               "Id": 263,
@@ -147,7 +147,6 @@
           "FormGroup": 0,
           "FormPos": 1,
           "EntityBase": 10003,
-          "MigrEntityBaseName": "RG_Product",
           "RecroGrid_Options": [
             {
               "Id": 266,
@@ -174,58 +173,6 @@
           "FormTab": 0,
           "FormGroup": 0,
           "FormPos": 65535
-        },
-        {
-          "PropertyId": 10007,
-          "EntityId": 10001,
-          "ColName": "ComboTest-RecroDict",
-          "ColPos": 0,
-          "ColWidth": 0,
-          "ListType": 0,
-          "IsKey": false,
-          "IsDynamic": true,
-          "Readable": true,
-          "Editable": true,
-          "FormType": 4,
-          "FormTab": 1,
-          "FormGroup": 0,
-          "FormPos": 1,
-          "RecroGrid_Options": [
-            {
-              "Id": 268,
-              "EntityId": 10001,
-              "PropertyId": 10007,
-              "OptionKey": "RGO_DictionaryItems",
-              "OptionValue": "<%%>Entity.UI.Categories_1",
-              "IsClientParam": false
-            }
-          ]
-        },
-        {
-          "PropertyId": 10008,
-          "EntityId": 10001,
-          "ColName": "ComboTest-Static",
-          "ColPos": 0,
-          "ColWidth": 0,
-          "ListType": 0,
-          "IsKey": false,
-          "IsDynamic": true,
-          "Readable": true,
-          "Editable": true,
-          "FormType": 4,
-          "FormTab": 1,
-          "FormGroup": 0,
-          "FormPos": 2,
-          "RecroGrid_Options": [
-            {
-              "Id": 267,
-              "EntityId": 10001,
-              "PropertyId": 10008,
-              "OptionKey": "RGO_DictionaryItems",
-              "OptionValue": "{0:;1:Bikes;2:Components;3:Clothing;4:Accessories}",
-              "IsClientParam": false
-            }
-          ]
         }
       ]
     },
@@ -298,7 +245,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10001,
-          "MigrEntityBaseName": "Categories",
           "RecroGrid_Options": [
             {
               "Id": 300,
@@ -327,8 +273,7 @@
           "FormTab": 1,
           "FormGroup": 0,
           "FormPos": 3,
-          "EntityBase": 10001,
-          "MigrEntityBaseName": "Categories"
+          "EntityBase": 10001
         },
         {
           "PropertyId": 10028,
@@ -345,8 +290,7 @@
           "FormTab": 0,
           "FormGroup": 0,
           "FormPos": 65535,
-          "EntityBase": 10001,
-          "MigrEntityBaseName": "Categories"
+          "EntityBase": 10001
         },
         {
           "PropertyId": 10029,
@@ -363,8 +307,7 @@
           "FormTab": 0,
           "FormGroup": 0,
           "FormPos": 65535,
-          "EntityBase": 10001,
-          "MigrEntityBaseName": "Categories"
+          "EntityBase": 10001
         },
         {
           "PropertyId": 10030,
@@ -495,7 +438,6 @@
           "FormGroup": 0,
           "FormPos": 1,
           "EntityBase": 10004,
-          "MigrEntityBaseName": "Order_Details",
           "RecroGrid_Options": [
             {
               "Id": 301,
@@ -667,7 +609,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10005,
-          "MigrEntityBaseName": "Suppliers",
           "RecroGrid_Options": [
             {
               "Id": 302,
@@ -696,7 +637,6 @@
           "FormGroup": 0,
           "FormPos": 8,
           "EntityBase": 10005,
-          "MigrEntityBaseName": "Suppliers",
           "RecroGrid_Options": [
             {
               "Id": 303,
@@ -859,7 +799,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10012,
-          "MigrEntityBaseName": "RG_Orders",
           "RecroGrid_Options": [
             {
               "Id": 305,
@@ -887,8 +826,7 @@
           "FormTab": 1,
           "FormGroup": 0,
           "FormPos": 1,
-          "EntityBase": 10012,
-          "MigrEntityBaseName": "RG_Orders"
+          "EntityBase": 10012
         },
         {
           "PropertyId": 10051,
@@ -906,8 +844,7 @@
           "FormTab": 0,
           "FormGroup": 0,
           "FormPos": 65535,
-          "EntityBase": 10014,
-          "MigrEntityBaseName": "Shippers"
+          "EntityBase": 10014
         },
         {
           "PropertyId": 10052,
@@ -925,7 +862,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10003,
-          "MigrEntityBaseName": "RG_Product",
           "RecroGrid_Options": [
             {
               "Id": 306,
@@ -953,8 +889,7 @@
           "FormTab": 1,
           "FormGroup": 0,
           "FormPos": 2,
-          "EntityBase": 10003,
-          "MigrEntityBaseName": "RG_Product"
+          "EntityBase": 10003
         },
         {
           "PropertyId": 10054,
@@ -1377,7 +1312,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10003,
-          "MigrEntityBaseName": "RG_Product",
           "RecroGrid_Options": [
             {
               "Id": 328,
@@ -1507,7 +1441,6 @@
           "FormGroup": 0,
           "FormPos": 1,
           "EntityBase": 10007,
-          "MigrEntityBaseName": "EmployeeTerritories",
           "RecroGrid_Options": [
             {
               "Id": 333,
@@ -1535,7 +1468,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10008,
-          "MigrEntityBaseName": "Region",
           "RecroGrid_Options": [
             {
               "Id": 334,
@@ -1563,8 +1495,7 @@
           "FormTab": 1,
           "FormGroup": 0,
           "FormPos": 2,
-          "EntityBase": 10008,
-          "MigrEntityBaseName": "Region"
+          "EntityBase": 10008
         },
         {
           "PropertyId": 10075,
@@ -1699,7 +1630,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10009,
-          "MigrEntityBaseName": "RG_Employee",
           "RecroGrid_Options": [
             {
               "Id": 337,
@@ -1727,8 +1657,7 @@
           "FormTab": 1,
           "FormGroup": 0,
           "FormPos": 65535,
-          "EntityBase": 10009,
-          "MigrEntityBaseName": "RG_Employee"
+          "EntityBase": 10009
         },
         {
           "PropertyId": 10082,
@@ -1762,7 +1691,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10006,
-          "MigrEntityBaseName": "Territories",
           "RecroGrid_Options": [
             {
               "Id": 338,
@@ -1791,7 +1719,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10006,
-          "MigrEntityBaseName": "Territories",
           "RecroGrid_Options": [
             {
               "Id": 339,
@@ -1886,7 +1813,6 @@
           "FormGroup": 0,
           "FormPos": 1,
           "EntityBase": 10006,
-          "MigrEntityBaseName": "Territories",
           "RecroGrid_Options": [
             {
               "Id": 341,
@@ -2098,7 +2024,6 @@
           "FormGroup": 0,
           "FormPos": 1,
           "EntityBase": 10009,
-          "MigrEntityBaseName": "RG_Employee",
           "RecroGrid_Options": [
             {
               "Id": 380,
@@ -2126,7 +2051,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10009,
-          "MigrEntityBaseName": "RG_Employee",
           "RecroGrid_Options": [
             {
               "Id": 381,
@@ -2155,7 +2079,6 @@
           "FormGroup": 2,
           "FormPos": 16,
           "EntityBase": 10009,
-          "MigrEntityBaseName": "RG_Employee",
           "RecroGrid_Options": [
             {
               "Id": 382,
@@ -2183,7 +2106,6 @@
           "FormGroup": 0,
           "FormPos": 1,
           "EntityBase": 10007,
-          "MigrEntityBaseName": "EmployeeTerritories",
           "RecroGrid_Options": [
             {
               "Id": 379,
@@ -2407,7 +2329,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10012,
-          "MigrEntityBaseName": "RG_Orders",
           "RecroGrid_Options": [
             {
               "Id": 383,
@@ -2740,7 +2661,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10013,
-          "MigrEntityBaseName": "Customers",
           "RecroGrid_Options": [
             {
               "Id": 462,
@@ -2767,8 +2687,7 @@
           "FormTab": 1,
           "FormGroup": 0,
           "FormPos": 2,
-          "EntityBase": 10013,
-          "MigrEntityBaseName": "Customers"
+          "EntityBase": 10013
         },
         {
           "PropertyId": 10163,
@@ -2787,7 +2706,6 @@
           "FormGroup": 0,
           "FormPos": 3,
           "EntityBase": 10013,
-          "MigrEntityBaseName": "Customers",
           "RecroGrid_Options": [
             {
               "Id": 463,
@@ -2841,7 +2759,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10009,
-          "MigrEntityBaseName": "RG_Employee",
           "RecroGrid_Options": [
             {
               "Id": 464,
@@ -2870,7 +2787,6 @@
           "FormGroup": 0,
           "FormPos": 4,
           "EntityBase": 10009,
-          "MigrEntityBaseName": "RG_Employee",
           "RecroGrid_Options": [
             {
               "Id": 465,
@@ -2924,7 +2840,6 @@
           "FormGroup": 0,
           "FormPos": 1,
           "EntityBase": 10004,
-          "MigrEntityBaseName": "Order_Details",
           "RecroGrid_Options": [
             {
               "Id": 466,
@@ -3182,7 +3097,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10014,
-          "MigrEntityBaseName": "Shippers",
           "RecroGrid_Options": [
             {
               "Id": 467,
@@ -3211,7 +3125,6 @@
           "FormGroup": 0,
           "FormPos": 5,
           "EntityBase": 10014,
-          "MigrEntityBaseName": "Shippers",
           "RecroGrid_Options": [
             {
               "Id": 468,
@@ -3623,7 +3536,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10012,
-          "MigrEntityBaseName": "RG_Orders",
           "RecroGrid_Options": [
             {
               "Id": 491,
@@ -3828,7 +3740,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10012,
-          "MigrEntityBaseName": "RG_Orders",
           "RecroGrid_Options": [
             {
               "Id": 496,
@@ -3954,7 +3865,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10001,
-          "MigrEntityBaseName": "Categories",
           "RecroGrid_Options": [
             {
               "Id": 512,
@@ -3983,8 +3893,7 @@
           "FormTab": 1,
           "FormGroup": 0,
           "FormPos": 65535,
-          "EntityBase": 10001,
-          "MigrEntityBaseName": "Categories"
+          "EntityBase": 10001
         },
         {
           "PropertyId": 10205,
@@ -4001,8 +3910,7 @@
           "FormTab": 0,
           "FormGroup": 0,
           "FormPos": 65535,
-          "EntityBase": 10001,
-          "MigrEntityBaseName": "Categories"
+          "EntityBase": 10001
         },
         {
           "PropertyId": 10206,
@@ -4019,8 +3927,7 @@
           "FormTab": 0,
           "FormGroup": 0,
           "FormPos": 65535,
-          "EntityBase": 10001,
-          "MigrEntityBaseName": "Categories"
+          "EntityBase": 10001
         },
         {
           "PropertyId": 10207,
@@ -4151,7 +4058,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10004,
-          "MigrEntityBaseName": "Order_Details",
           "RecroGrid_Options": [
             {
               "Id": 513,
@@ -4323,7 +4229,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10005,
-          "MigrEntityBaseName": "Suppliers",
           "RecroGrid_Options": [
             {
               "Id": 514,
@@ -4352,7 +4257,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10005,
-          "MigrEntityBaseName": "Suppliers",
           "RecroGrid_Options": [
             {
               "Id": 515,
@@ -4529,7 +4433,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10001,
-          "MigrEntityBaseName": "Categories",
           "RecroGrid_Options": [
             {
               "Id": 533,
@@ -4558,8 +4461,7 @@
           "FormTab": 1,
           "FormGroup": 0,
           "FormPos": 65535,
-          "EntityBase": 10001,
-          "MigrEntityBaseName": "Categories"
+          "EntityBase": 10001
         },
         {
           "PropertyId": 10227,
@@ -4576,8 +4478,7 @@
           "FormTab": 0,
           "FormGroup": 0,
           "FormPos": 65535,
-          "EntityBase": 10001,
-          "MigrEntityBaseName": "Categories"
+          "EntityBase": 10001
         },
         {
           "PropertyId": 10228,
@@ -4594,8 +4495,7 @@
           "FormTab": 0,
           "FormGroup": 0,
           "FormPos": 65535,
-          "EntityBase": 10001,
-          "MigrEntityBaseName": "Categories"
+          "EntityBase": 10001
         },
         {
           "PropertyId": 10229,
@@ -4726,7 +4626,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10004,
-          "MigrEntityBaseName": "Order_Details",
           "RecroGrid_Options": [
             {
               "Id": 534,
@@ -4898,7 +4797,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10005,
-          "MigrEntityBaseName": "Suppliers",
           "RecroGrid_Options": [
             {
               "Id": 535,
@@ -4927,7 +4825,6 @@
           "FormGroup": 0,
           "FormPos": 65535,
           "EntityBase": 10005,
-          "MigrEntityBaseName": "Suppliers",
           "RecroGrid_Options": [
             {
               "Id": 536,

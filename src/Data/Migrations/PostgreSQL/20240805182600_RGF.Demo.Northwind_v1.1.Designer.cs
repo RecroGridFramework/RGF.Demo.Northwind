@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using RGF.Demo.Northwind.Area.RGF.DbModel;
@@ -11,9 +12,11 @@ using RGF.Demo.Northwind.Area.RGF.DbModel;
 namespace RGF.Demo.Northwind.Data.Migrations.PostgreSQL
 {
     [DbContext(typeof(BaseDbContextMigrPostgreSQL))]
-    partial class BaseDbContextMigrPostgreSQLModelSnapshot : ModelSnapshot
+    [Migration("20240805182600_RGF.Demo.Northwind_v1.1")]
+    partial class RGFDemoNorthwind_v11
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

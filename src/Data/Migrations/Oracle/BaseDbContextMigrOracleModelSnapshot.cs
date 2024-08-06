@@ -17,67 +17,10 @@ namespace RGF.Demo.Northwind.Data.Migrations.Oracle
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.22")
+                .HasAnnotation("ProductVersion", "8.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            OracleModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("Recrovit.RecroGridFramework.Data.vRecroSec", b =>
-                {
-                    b.Property<int>("ObjectPermissionId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)")
-                        .HasColumnName("OBJECTPERMISSIONID");
-
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ObjectPermissionId"), 1L, 1);
-
-                    b.Property<string>("ObjectKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("NVARCHAR2(128)")
-                        .HasColumnName("OBJECTKEY");
-
-                    b.Property<string>("ObjectName")
-                        .HasMaxLength(255)
-                        .HasColumnType("NVARCHAR2(255)")
-                        .HasColumnName("OBJECTNAME");
-
-                    b.HasKey("ObjectPermissionId")
-                        .HasName("PK_VRECROSEC");
-
-                    b.ToTable("VRECROSEC", null, t => t.ExcludeFromMigrations());
-                });
-
-            modelBuilder.Entity("Recrovit.RecroGridFramework.Data.vRecroSec_FEP", b =>
-                {
-                    b.Property<int>("FEPId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)")
-                        .HasColumnName("FEPID");
-
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FEPId"), 1L, 1);
-
-                    b.Property<int>("EntityId")
-                        .HasColumnType("NUMBER(10)")
-                        .HasColumnName("ENTITYID");
-
-                    b.Property<int>("FEPType")
-                        .HasColumnType("NUMBER(10)")
-                        .HasColumnName("FEPTYPE");
-
-                    b.Property<string>("Key1")
-                        .HasMaxLength(128)
-                        .HasColumnType("NVARCHAR2(128)")
-                        .HasColumnName("KEY1");
-
-                    b.Property<int>("TransactionId")
-                        .HasColumnType("NUMBER(10)")
-                        .HasColumnName("TRANSACTIONID");
-
-                    b.HasKey("FEPId")
-                        .HasName("PK_VRECROSEC_FEP");
-
-                    b.ToTable("VRECROSEC_FEP", null, t => t.ExcludeFromMigrations());
-                });
+            OracleModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("RGF.Demo.Northwind.Models.Categories", b =>
                 {
@@ -86,7 +29,7 @@ namespace RGF.Demo.Northwind.Data.Migrations.Oracle
                         .HasColumnType("NUMBER(10)")
                         .HasColumnName("CATEGORYID");
 
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryID"), 1L, 1);
+                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryID"));
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
@@ -97,6 +40,22 @@ namespace RGF.Demo.Northwind.Data.Migrations.Oracle
                     b.Property<string>("Description")
                         .HasColumnType("NCLOB")
                         .HasColumnName("DESCRIPTION");
+
+                    b.Property<int?>("DropdownCallback")
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("DROPDOWNCALLBACK");
+
+                    b.Property<int?>("DropdownEnum")
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("DROPDOWNENUM");
+
+                    b.Property<int?>("DropdownRecroDict")
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("DROPDOWNRECRODICT");
+
+                    b.Property<int?>("DropdownStatic")
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("DROPDOWNSTATIC");
 
                     b.Property<byte[]>("Picture")
                         .HasColumnType("BLOB")
@@ -245,6 +204,32 @@ namespace RGF.Demo.Northwind.Data.Migrations.Oracle
                     b.ToTable("CUSTOMERS");
                 });
 
+            modelBuilder.Entity("RGF.Demo.Northwind.Models.EmployeeTerritories", b =>
+                {
+                    b.Property<int>("EmployeeID")
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("EMPLOYEEID");
+
+                    b.Property<string>("TerritoryID")
+                        .HasMaxLength(20)
+                        .HasColumnType("NVARCHAR2(20)")
+                        .HasColumnName("TERRITORYID");
+
+                    b.Property<int>("rowversion")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("ROWVERSION")
+                        .HasDefaultValueSql("(0)");
+
+                    b.HasKey("EmployeeID", "TerritoryID")
+                        .HasName("PK_EMPLOYEETERRITORIES");
+
+                    b.HasIndex("TerritoryID")
+                        .HasDatabaseName("IX_EMPLOYEETERRITORIES_TERRITORYID");
+
+                    b.ToTable("EMPLOYEETERRITORIES", (string)null);
+                });
+
             modelBuilder.Entity("RGF.Demo.Northwind.Models.Employees", b =>
                 {
                     b.Property<int>("EmployeeID")
@@ -252,7 +237,7 @@ namespace RGF.Demo.Northwind.Data.Migrations.Oracle
                         .HasColumnType("NUMBER(10)")
                         .HasColumnName("EMPLOYEEID");
 
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmployeeID"), 1L, 1);
+                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmployeeID"));
 
                     b.Property<string>("Address")
                         .HasMaxLength(60)
@@ -357,32 +342,6 @@ namespace RGF.Demo.Northwind.Data.Migrations.Oracle
                     b.ToTable("EMPLOYEES");
                 });
 
-            modelBuilder.Entity("RGF.Demo.Northwind.Models.EmployeeTerritories", b =>
-                {
-                    b.Property<int>("EmployeeID")
-                        .HasColumnType("NUMBER(10)")
-                        .HasColumnName("EMPLOYEEID");
-
-                    b.Property<string>("TerritoryID")
-                        .HasMaxLength(20)
-                        .HasColumnType("NVARCHAR2(20)")
-                        .HasColumnName("TERRITORYID");
-
-                    b.Property<int>("rowversion")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)")
-                        .HasColumnName("ROWVERSION")
-                        .HasDefaultValueSql("(0)");
-
-                    b.HasKey("EmployeeID", "TerritoryID")
-                        .HasName("PK_EMPLOYEETERRITORIES");
-
-                    b.HasIndex("TerritoryID")
-                        .HasDatabaseName("IX_EMPLOYEETERRITORIES_TERRITORYID");
-
-                    b.ToTable("EMPLOYEETERRITORIES", (string)null);
-                });
-
             modelBuilder.Entity("RGF.Demo.Northwind.Models.Order_Details", b =>
                 {
                     b.Property<int>("OrderId")
@@ -436,7 +395,7 @@ namespace RGF.Demo.Northwind.Data.Migrations.Oracle
                         .HasColumnType("NUMBER(10)")
                         .HasColumnName("ORDERID");
 
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"), 1L, 1);
+                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"));
 
                     b.Property<string>("CustomerID")
                         .HasColumnType("NCHAR(5)")
@@ -535,7 +494,7 @@ namespace RGF.Demo.Northwind.Data.Migrations.Oracle
                         .HasColumnType("NUMBER(10)")
                         .HasColumnName("PRODUCTID");
 
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductID"), 1L, 1);
+                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductID"));
 
                     b.Property<int?>("CategoryID")
                         .HasColumnType("NUMBER(10)")
@@ -635,7 +594,7 @@ namespace RGF.Demo.Northwind.Data.Migrations.Oracle
                         .HasColumnType("NUMBER(10)")
                         .HasColumnName("SHIPPERID");
 
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ShipperID"), 1L, 1);
+                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ShipperID"));
 
                     b.Property<string>("CompanyName")
                         .IsRequired()
@@ -667,7 +626,7 @@ namespace RGF.Demo.Northwind.Data.Migrations.Oracle
                         .HasColumnType("NUMBER(10)")
                         .HasColumnName("SUPPLIERID");
 
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SupplierID"), 1L, 1);
+                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SupplierID"));
 
                     b.Property<string>("Address")
                         .HasMaxLength(60)
@@ -773,6 +732,69 @@ namespace RGF.Demo.Northwind.Data.Migrations.Oracle
                     b.ToTable("TERRITORIES");
                 });
 
+            modelBuilder.Entity("Recrovit.RecroGridFramework.Data.vRecroSec", b =>
+                {
+                    b.Property<int>("ObjectPermissionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("OBJECTPERMISSIONID");
+
+                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ObjectPermissionId"));
+
+                    b.Property<string>("ObjectKey")
+                        .HasMaxLength(128)
+                        .HasColumnType("NVARCHAR2(128)")
+                        .HasColumnName("OBJECTKEY");
+
+                    b.Property<string>("ObjectName")
+                        .HasMaxLength(255)
+                        .HasColumnType("NVARCHAR2(255)")
+                        .HasColumnName("OBJECTNAME");
+
+                    b.HasKey("ObjectPermissionId")
+                        .HasName("PK_VRECROSEC");
+
+                    b.ToTable("VRECROSEC", null, t =>
+                        {
+                            t.ExcludeFromMigrations();
+                        });
+                });
+
+            modelBuilder.Entity("Recrovit.RecroGridFramework.Data.vRecroSec_FEP", b =>
+                {
+                    b.Property<int>("FEPId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("FEPID");
+
+                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FEPId"));
+
+                    b.Property<int>("EntityId")
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("ENTITYID");
+
+                    b.Property<int>("FEPType")
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("FEPTYPE");
+
+                    b.Property<string>("Key1")
+                        .HasMaxLength(128)
+                        .HasColumnType("NVARCHAR2(128)")
+                        .HasColumnName("KEY1");
+
+                    b.Property<int>("TransactionId")
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("TRANSACTIONID");
+
+                    b.HasKey("FEPId")
+                        .HasName("PK_VRECROSEC_FEP");
+
+                    b.ToTable("VRECROSEC_FEP", null, t =>
+                        {
+                            t.ExcludeFromMigrations();
+                        });
+                });
+
             modelBuilder.Entity("RGF.Demo.Northwind.Models.CustomerCustomerDemo", b =>
                 {
                     b.HasOne("RGF.Demo.Northwind.Models.Customers", "Customer")
@@ -792,16 +814,6 @@ namespace RGF.Demo.Northwind.Data.Migrations.Oracle
                     b.Navigation("CustomerType");
                 });
 
-            modelBuilder.Entity("RGF.Demo.Northwind.Models.Employees", b =>
-                {
-                    b.HasOne("RGF.Demo.Northwind.Models.Employees", "Employees2")
-                        .WithMany("Employees1")
-                        .HasForeignKey("ReportsTo")
-                        .HasConstraintName("FK_EMPLOYEES_EMPLOYEES");
-
-                    b.Navigation("Employees2");
-                });
-
             modelBuilder.Entity("RGF.Demo.Northwind.Models.EmployeeTerritories", b =>
                 {
                     b.HasOne("RGF.Demo.Northwind.Models.Employees", "Employees")
@@ -819,6 +831,16 @@ namespace RGF.Demo.Northwind.Data.Migrations.Oracle
                     b.Navigation("Employees");
 
                     b.Navigation("Territories");
+                });
+
+            modelBuilder.Entity("RGF.Demo.Northwind.Models.Employees", b =>
+                {
+                    b.HasOne("RGF.Demo.Northwind.Models.Employees", "Employees2")
+                        .WithMany("Employees1")
+                        .HasForeignKey("ReportsTo")
+                        .HasConstraintName("FK_EMPLOYEES_EMPLOYEES");
+
+                    b.Navigation("Employees2");
                 });
 
             modelBuilder.Entity("RGF.Demo.Northwind.Models.Order_Details", b =>

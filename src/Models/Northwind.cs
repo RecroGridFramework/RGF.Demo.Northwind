@@ -18,6 +18,10 @@ public partial class Categories
     public string Description { get; set; }
     public byte[] Picture { get; set; }
     public int rowversion { get; set; }
+    public int? DropdownStatic { get; set; }
+    public int? DropdownRecroDict { get; set; }
+    public int? DropdownEnum { get; set; }
+    public int? DropdownCallback { get; set; }
 
     public ICollection<Products> Products { get; set; }
 }

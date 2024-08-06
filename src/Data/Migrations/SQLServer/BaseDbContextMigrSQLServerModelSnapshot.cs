@@ -18,67 +18,10 @@ namespace RGF.Demo.Northwind.Data.Migrations.SQLServer
 #pragma warning disable 612, 618
             modelBuilder
                 .UseCollation("SQL_Latin1_General_CP1_CI_AS")
-                .HasAnnotation("ProductVersion", "6.0.22")
+                .HasAnnotation("ProductVersion", "8.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("Recrovit.RecroGridFramework.Data.vRecroSec", b =>
-                {
-                    b.Property<int>("ObjectPermissionId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("ObjectPermissionId");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ObjectPermissionId"), 1L, 1);
-
-                    b.Property<string>("ObjectKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)")
-                        .HasColumnName("ObjectKey");
-
-                    b.Property<string>("ObjectName")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
-                        .HasColumnName("ObjectName");
-
-                    b.HasKey("ObjectPermissionId")
-                        .HasName("PK_vRecroSec");
-
-                    b.ToTable("vRecroSec", null, t => t.ExcludeFromMigrations());
-                });
-
-            modelBuilder.Entity("Recrovit.RecroGridFramework.Data.vRecroSec_FEP", b =>
-                {
-                    b.Property<int>("FEPId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("FEPId");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FEPId"), 1L, 1);
-
-                    b.Property<int>("EntityId")
-                        .HasColumnType("int")
-                        .HasColumnName("EntityId");
-
-                    b.Property<int>("FEPType")
-                        .HasColumnType("int")
-                        .HasColumnName("FEPType");
-
-                    b.Property<string>("Key1")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)")
-                        .HasColumnName("Key1");
-
-                    b.Property<int>("TransactionId")
-                        .HasColumnType("int")
-                        .HasColumnName("TransactionId");
-
-                    b.HasKey("FEPId")
-                        .HasName("PK_vRecroSec_FEP");
-
-                    b.ToTable("vRecroSec_FEP", null, t => t.ExcludeFromMigrations());
-                });
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("RGF.Demo.Northwind.Models.Categories", b =>
                 {
@@ -87,7 +30,7 @@ namespace RGF.Demo.Northwind.Data.Migrations.SQLServer
                         .HasColumnType("int")
                         .HasColumnName("CategoryID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryID"));
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
@@ -98,6 +41,22 @@ namespace RGF.Demo.Northwind.Data.Migrations.SQLServer
                     b.Property<string>("Description")
                         .HasColumnType("ntext")
                         .HasColumnName("Description");
+
+                    b.Property<int?>("DropdownCallback")
+                        .HasColumnType("int")
+                        .HasColumnName("DropdownCallback");
+
+                    b.Property<int?>("DropdownEnum")
+                        .HasColumnType("int")
+                        .HasColumnName("DropdownEnum");
+
+                    b.Property<int?>("DropdownRecroDict")
+                        .HasColumnType("int")
+                        .HasColumnName("DropdownRecroDict");
+
+                    b.Property<int?>("DropdownStatic")
+                        .HasColumnType("int")
+                        .HasColumnName("DropdownStatic");
 
                     b.Property<byte[]>("Picture")
                         .HasColumnType("varbinary(max)")
@@ -250,6 +209,34 @@ namespace RGF.Demo.Northwind.Data.Migrations.SQLServer
                     b.ToTable("Customers");
                 });
 
+            modelBuilder.Entity("RGF.Demo.Northwind.Models.EmployeeTerritories", b =>
+                {
+                    b.Property<int>("EmployeeID")
+                        .HasColumnType("int")
+                        .HasColumnName("EmployeeID");
+
+                    b.Property<string>("TerritoryID")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnName("TerritoryID");
+
+                    b.Property<int>("rowversion")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("rowversion")
+                        .HasDefaultValueSql("(0)");
+
+                    b.HasKey("EmployeeID", "TerritoryID")
+                        .HasName("PK_EmployeeTerritories");
+
+                    SqlServerKeyBuilderExtensions.IsClustered(b.HasKey("EmployeeID", "TerritoryID"), false);
+
+                    b.HasIndex("TerritoryID")
+                        .HasDatabaseName("IX_EmployeeTerritories_TerritoryID");
+
+                    b.ToTable("EmployeeTerritories");
+                });
+
             modelBuilder.Entity("RGF.Demo.Northwind.Models.Employees", b =>
                 {
                     b.Property<int>("EmployeeID")
@@ -257,7 +244,7 @@ namespace RGF.Demo.Northwind.Data.Migrations.SQLServer
                         .HasColumnType("int")
                         .HasColumnName("EmployeeID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmployeeID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmployeeID"));
 
                     b.Property<string>("Address")
                         .HasMaxLength(60)
@@ -362,34 +349,6 @@ namespace RGF.Demo.Northwind.Data.Migrations.SQLServer
                     b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("RGF.Demo.Northwind.Models.EmployeeTerritories", b =>
-                {
-                    b.Property<int>("EmployeeID")
-                        .HasColumnType("int")
-                        .HasColumnName("EmployeeID");
-
-                    b.Property<string>("TerritoryID")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)")
-                        .HasColumnName("TerritoryID");
-
-                    b.Property<int>("rowversion")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("rowversion")
-                        .HasDefaultValueSql("(0)");
-
-                    b.HasKey("EmployeeID", "TerritoryID")
-                        .HasName("PK_EmployeeTerritories");
-
-                    SqlServerKeyBuilderExtensions.IsClustered(b.HasKey("EmployeeID", "TerritoryID"), false);
-
-                    b.HasIndex("TerritoryID")
-                        .HasDatabaseName("IX_EmployeeTerritories_TerritoryID");
-
-                    b.ToTable("EmployeeTerritories");
-                });
-
             modelBuilder.Entity("RGF.Demo.Northwind.Models.Order_Details", b =>
                 {
                     b.Property<int>("OrderId")
@@ -443,7 +402,7 @@ namespace RGF.Demo.Northwind.Data.Migrations.SQLServer
                         .HasColumnType("int")
                         .HasColumnName("OrderID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"));
 
                     b.Property<string>("CustomerID")
                         .HasColumnType("nchar(5)")
@@ -542,7 +501,7 @@ namespace RGF.Demo.Northwind.Data.Migrations.SQLServer
                         .HasColumnType("int")
                         .HasColumnName("ProductID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductID"));
 
                     b.Property<int?>("CategoryID")
                         .HasColumnType("int")
@@ -642,7 +601,7 @@ namespace RGF.Demo.Northwind.Data.Migrations.SQLServer
                         .HasColumnType("int")
                         .HasColumnName("ShipperID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ShipperID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ShipperID"));
 
                     b.Property<string>("CompanyName")
                         .IsRequired()
@@ -674,7 +633,7 @@ namespace RGF.Demo.Northwind.Data.Migrations.SQLServer
                         .HasColumnType("int")
                         .HasColumnName("SupplierID");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SupplierID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SupplierID"));
 
                     b.Property<string>("Address")
                         .HasMaxLength(60)
@@ -782,6 +741,69 @@ namespace RGF.Demo.Northwind.Data.Migrations.SQLServer
                     b.ToTable("Territories");
                 });
 
+            modelBuilder.Entity("Recrovit.RecroGridFramework.Data.vRecroSec", b =>
+                {
+                    b.Property<int>("ObjectPermissionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("ObjectPermissionId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ObjectPermissionId"));
+
+                    b.Property<string>("ObjectKey")
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)")
+                        .HasColumnName("ObjectKey");
+
+                    b.Property<string>("ObjectName")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)")
+                        .HasColumnName("ObjectName");
+
+                    b.HasKey("ObjectPermissionId")
+                        .HasName("PK_vRecroSec");
+
+                    b.ToTable("vRecroSec", null, t =>
+                        {
+                            t.ExcludeFromMigrations();
+                        });
+                });
+
+            modelBuilder.Entity("Recrovit.RecroGridFramework.Data.vRecroSec_FEP", b =>
+                {
+                    b.Property<int>("FEPId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("FEPId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FEPId"));
+
+                    b.Property<int>("EntityId")
+                        .HasColumnType("int")
+                        .HasColumnName("EntityId");
+
+                    b.Property<int>("FEPType")
+                        .HasColumnType("int")
+                        .HasColumnName("FEPType");
+
+                    b.Property<string>("Key1")
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)")
+                        .HasColumnName("Key1");
+
+                    b.Property<int>("TransactionId")
+                        .HasColumnType("int")
+                        .HasColumnName("TransactionId");
+
+                    b.HasKey("FEPId")
+                        .HasName("PK_vRecroSec_FEP");
+
+                    b.ToTable("vRecroSec_FEP", null, t =>
+                        {
+                            t.ExcludeFromMigrations();
+                        });
+                });
+
             modelBuilder.Entity("RGF.Demo.Northwind.Models.CustomerCustomerDemo", b =>
                 {
                     b.HasOne("RGF.Demo.Northwind.Models.Customers", "Customer")
@@ -801,16 +823,6 @@ namespace RGF.Demo.Northwind.Data.Migrations.SQLServer
                     b.Navigation("CustomerType");
                 });
 
-            modelBuilder.Entity("RGF.Demo.Northwind.Models.Employees", b =>
-                {
-                    b.HasOne("RGF.Demo.Northwind.Models.Employees", "Employees2")
-                        .WithMany("Employees1")
-                        .HasForeignKey("ReportsTo")
-                        .HasConstraintName("FK_Employees_Employees");
-
-                    b.Navigation("Employees2");
-                });
-
             modelBuilder.Entity("RGF.Demo.Northwind.Models.EmployeeTerritories", b =>
                 {
                     b.HasOne("RGF.Demo.Northwind.Models.Employees", "Employees")
@@ -828,6 +840,16 @@ namespace RGF.Demo.Northwind.Data.Migrations.SQLServer
                     b.Navigation("Employees");
 
                     b.Navigation("Territories");
+                });
+
+            modelBuilder.Entity("RGF.Demo.Northwind.Models.Employees", b =>
+                {
+                    b.HasOne("RGF.Demo.Northwind.Models.Employees", "Employees2")
+                        .WithMany("Employees1")
+                        .HasForeignKey("ReportsTo")
+                        .HasConstraintName("FK_Employees_Employees");
+
+                    b.Navigation("Employees2");
                 });
 
             modelBuilder.Entity("RGF.Demo.Northwind.Models.Order_Details", b =>

@@ -51,6 +51,24 @@
       "StringId": "A2",
       "Str_eng": "<div><span style=\"color: rgb(204, 51, 51);\"><strong>RecroDict Form demo</strong></span></div>",
       "Str_hun": "<div><span style=\"color: rgb(204, 51, 51);\"><strong>RecroDict Form demo</strong></span></div>"
+    },
+    {
+      "Scope": "DropdownRecroDict",
+      "StringId": "1",
+      "Str_eng": "RD-Item1",
+      "Str_hun": "RD-Item1"
+    },
+    {
+      "Scope": "DropdownRecroDict",
+      "StringId": "2",
+      "Str_eng": "RD-Item2",
+      "Str_hun": "RD-Item2"
+    },
+    {
+      "Scope": "DropdownRecroDict",
+      "StringId": "3",
+      "Str_eng": "RD-Item3",
+      "Str_hun": "RD-Item3"
     }
   ]
 }

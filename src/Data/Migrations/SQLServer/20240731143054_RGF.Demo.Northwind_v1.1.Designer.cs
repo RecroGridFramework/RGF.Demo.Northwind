@@ -2,759 +2,771 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using RGF.Demo.Northwind.Area.RGF.DbModel;
 
 #nullable disable
 
-namespace RGF.Demo.Northwind.Data.Migrations.PostgreSQL
+namespace RGF.Demo.Northwind.Data.Migrations.SQLServer
 {
-    [DbContext(typeof(BaseDbContextMigrPostgreSQL))]
-    partial class BaseDbContextMigrPostgreSQLModelSnapshot : ModelSnapshot
+    [DbContext(typeof(BaseDbContextMigrSQLServer))]
+    [Migration("20240731143054_RGF.Demo.Northwind_v1.1")]
+    partial class RGFDemoNorthwind_v11
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.7")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+                .UseCollation("SQL_Latin1_General_CP1_CI_AS")
+                .HasAnnotation("ProductVersion", "8.0.5")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("RGF.Demo.Northwind.Models.Categories", b =>
                 {
                     b.Property<int>("CategoryID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("categoryid");
+                        .HasColumnType("int")
+                        .HasColumnName("CategoryID");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("CategoryID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryID"));
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
                         .HasMaxLength(15)
-                        .HasColumnType("character varying(15)")
-                        .HasColumnName("categoryname");
+                        .HasColumnType("nvarchar(15)")
+                        .HasColumnName("CategoryName");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text")
-                        .HasColumnName("description");
+                        .HasColumnType("ntext")
+                        .HasColumnName("Description");
 
                     b.Property<int?>("DropdownCallback")
-                        .HasColumnType("integer")
-                        .HasColumnName("dropdowncallback");
+                        .HasColumnType("int")
+                        .HasColumnName("DropdownCallback");
 
                     b.Property<int?>("DropdownEnum")
-                        .HasColumnType("integer")
-                        .HasColumnName("dropdownenum");
+                        .HasColumnType("int")
+                        .HasColumnName("DropdownEnum");
 
                     b.Property<int?>("DropdownRecroDict")
-                        .HasColumnType("integer")
-                        .HasColumnName("dropdownrecrodict");
+                        .HasColumnType("int")
+                        .HasColumnName("DropdownRecroDict");
 
                     b.Property<int?>("DropdownStatic")
-                        .HasColumnType("integer")
-                        .HasColumnName("dropdownstatic");
+                        .HasColumnType("int")
+                        .HasColumnName("DropdownStatic");
 
                     b.Property<byte[]>("Picture")
-                        .HasColumnType("bytea")
-                        .HasColumnName("picture");
+                        .HasColumnType("varbinary(max)")
+                        .HasColumnName("Picture");
 
                     b.Property<int>("rowversion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("int")
                         .HasColumnName("rowversion")
                         .HasDefaultValueSql("(0)");
 
                     b.HasKey("CategoryID")
-                        .HasName("pk_categories");
+                        .HasName("PK_Categories");
 
                     b.HasIndex("CategoryName")
-                        .HasDatabaseName("ix_categories_categoryname");
+                        .HasDatabaseName("CategoryName");
 
-                    b.ToTable("categories");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("RGF.Demo.Northwind.Models.CustomerCustomerDemo", b =>
                 {
                     b.Property<string>("CustomerID")
-                        .HasColumnType("character(5)")
-                        .HasColumnName("customerid");
+                        .HasColumnType("nchar(5)")
+                        .HasColumnName("CustomerID");
 
                     b.Property<string>("CustomerTypeID")
-                        .HasColumnType("character(10)")
-                        .HasColumnName("customertypeid");
+                        .HasColumnType("nchar(10)")
+                        .HasColumnName("CustomerTypeID");
 
                     b.Property<int>("rowversion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("int")
                         .HasColumnName("rowversion")
                         .HasDefaultValueSql("(0)");
 
                     b.HasKey("CustomerID", "CustomerTypeID")
-                        .HasName("pk_customercustomerdemo");
+                        .HasName("PK_CustomerCustomerDemo");
+
+                    SqlServerKeyBuilderExtensions.IsClustered(b.HasKey("CustomerID", "CustomerTypeID"), false);
 
                     b.HasIndex("CustomerTypeID")
-                        .HasDatabaseName("ix_customercustomerdemo_customertypeid");
+                        .HasDatabaseName("IX_CustomerCustomerDemo_CustomerTypeID");
 
-                    b.ToTable("customercustomerdemo");
+                    b.ToTable("CustomerCustomerDemo");
                 });
 
             modelBuilder.Entity("RGF.Demo.Northwind.Models.CustomerDemographics", b =>
                 {
                     b.Property<string>("CustomerTypeID")
-                        .HasColumnType("character(10)")
-                        .HasColumnName("customertypeid");
+                        .HasColumnType("nchar(10)")
+                        .HasColumnName("CustomerTypeID");
 
                     b.Property<string>("CustomerDesc")
-                        .HasColumnType("text")
-                        .HasColumnName("customerdesc");
+                        .HasColumnType("ntext")
+                        .HasColumnName("CustomerDesc");
 
                     b.Property<int>("rowversion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("int")
                         .HasColumnName("rowversion")
                         .HasDefaultValueSql("(0)");
 
                     b.HasKey("CustomerTypeID")
-                        .HasName("pk_customerdemographics");
+                        .HasName("PK_CustomerDemographics");
 
-                    b.ToTable("customerdemographics");
+                    SqlServerKeyBuilderExtensions.IsClustered(b.HasKey("CustomerTypeID"), false);
+
+                    b.ToTable("CustomerDemographics");
                 });
 
             modelBuilder.Entity("RGF.Demo.Northwind.Models.Customers", b =>
                 {
                     b.Property<string>("CustomerID")
-                        .HasColumnType("character(5)")
-                        .HasColumnName("customerid");
+                        .HasColumnType("nchar(5)")
+                        .HasColumnName("CustomerID");
 
                     b.Property<string>("Address")
                         .HasMaxLength(60)
-                        .HasColumnType("character varying(60)")
-                        .HasColumnName("address");
+                        .HasColumnType("nvarchar(60)")
+                        .HasColumnName("Address");
 
                     b.Property<string>("City")
                         .HasMaxLength(15)
-                        .HasColumnType("character varying(15)")
-                        .HasColumnName("city");
+                        .HasColumnType("nvarchar(15)")
+                        .HasColumnName("City");
 
                     b.Property<string>("CompanyName")
                         .IsRequired()
                         .HasMaxLength(40)
-                        .HasColumnType("character varying(40)")
-                        .HasColumnName("companyname");
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("CompanyName");
 
                     b.Property<string>("ContactName")
                         .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
-                        .HasColumnName("contactname");
+                        .HasColumnType("nvarchar(30)")
+                        .HasColumnName("ContactName");
 
                     b.Property<string>("ContactTitle")
                         .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
-                        .HasColumnName("contacttitle");
+                        .HasColumnType("nvarchar(30)")
+                        .HasColumnName("ContactTitle");
 
                     b.Property<string>("Country")
                         .HasMaxLength(15)
-                        .HasColumnType("character varying(15)")
-                        .HasColumnName("country");
+                        .HasColumnType("nvarchar(15)")
+                        .HasColumnName("Country");
 
                     b.Property<string>("Fax")
                         .HasMaxLength(24)
-                        .HasColumnType("character varying(24)")
-                        .HasColumnName("fax");
+                        .HasColumnType("nvarchar(24)")
+                        .HasColumnName("Fax");
 
                     b.Property<string>("Phone")
                         .HasMaxLength(24)
-                        .HasColumnType("character varying(24)")
-                        .HasColumnName("phone");
+                        .HasColumnType("nvarchar(24)")
+                        .HasColumnName("Phone");
 
                     b.Property<string>("PostalCode")
                         .HasMaxLength(10)
-                        .HasColumnType("character varying(10)")
-                        .HasColumnName("postalcode");
+                        .HasColumnType("nvarchar(10)")
+                        .HasColumnName("PostalCode");
 
                     b.Property<string>("Region")
                         .HasMaxLength(15)
-                        .HasColumnType("character varying(15)")
-                        .HasColumnName("region");
+                        .HasColumnType("nvarchar(15)")
+                        .HasColumnName("Region");
 
                     b.Property<int>("rowversion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("int")
                         .HasColumnName("rowversion")
                         .HasDefaultValueSql("(0)");
 
                     b.HasKey("CustomerID")
-                        .HasName("pk_customers");
+                        .HasName("PK_Customers");
 
                     b.HasIndex("City")
-                        .HasDatabaseName("ix_customers_city");
+                        .HasDatabaseName("City");
 
                     b.HasIndex("CompanyName")
-                        .HasDatabaseName("ix_customers_companyname");
+                        .HasDatabaseName("CompanyName");
 
                     b.HasIndex("PostalCode")
-                        .HasDatabaseName("ix_customers_postalcode");
+                        .HasDatabaseName("PostalCode");
 
                     b.HasIndex("Region")
-                        .HasDatabaseName("ix_customers_region");
+                        .HasDatabaseName("Region");
 
-                    b.ToTable("customers");
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("RGF.Demo.Northwind.Models.EmployeeTerritories", b =>
                 {
                     b.Property<int>("EmployeeID")
-                        .HasColumnType("integer")
-                        .HasColumnName("employeeid");
+                        .HasColumnType("int")
+                        .HasColumnName("EmployeeID");
 
                     b.Property<string>("TerritoryID")
                         .HasMaxLength(20)
-                        .HasColumnType("character varying(20)")
-                        .HasColumnName("territoryid");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnName("TerritoryID");
 
                     b.Property<int>("rowversion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("int")
                         .HasColumnName("rowversion")
                         .HasDefaultValueSql("(0)");
 
                     b.HasKey("EmployeeID", "TerritoryID")
-                        .HasName("pk_employeeterritories");
+                        .HasName("PK_EmployeeTerritories");
+
+                    SqlServerKeyBuilderExtensions.IsClustered(b.HasKey("EmployeeID", "TerritoryID"), false);
 
                     b.HasIndex("TerritoryID")
-                        .HasDatabaseName("ix_employeeterritories_territoryid");
+                        .HasDatabaseName("IX_EmployeeTerritories_TerritoryID");
 
-                    b.ToTable("employeeterritories", (string)null);
+                    b.ToTable("EmployeeTerritories");
                 });
 
             modelBuilder.Entity("RGF.Demo.Northwind.Models.Employees", b =>
                 {
                     b.Property<int>("EmployeeID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("employeeid");
+                        .HasColumnType("int")
+                        .HasColumnName("EmployeeID");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("EmployeeID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmployeeID"));
 
                     b.Property<string>("Address")
                         .HasMaxLength(60)
-                        .HasColumnType("character varying(60)")
-                        .HasColumnName("address");
+                        .HasColumnType("nvarchar(60)")
+                        .HasColumnName("Address");
 
                     b.Property<DateTime?>("BirthDate")
-                        .HasColumnType("timestamp without time zone")
-                        .HasColumnName("birthdate");
+                        .HasColumnType("datetime")
+                        .HasColumnName("BirthDate");
 
                     b.Property<string>("City")
                         .HasMaxLength(15)
-                        .HasColumnType("character varying(15)")
-                        .HasColumnName("city");
+                        .HasColumnType("nvarchar(15)")
+                        .HasColumnName("City");
 
                     b.Property<string>("Country")
                         .HasMaxLength(15)
-                        .HasColumnType("character varying(15)")
-                        .HasColumnName("country");
+                        .HasColumnType("nvarchar(15)")
+                        .HasColumnName("Country");
 
                     b.Property<string>("Extension")
                         .HasMaxLength(4)
-                        .HasColumnType("character varying(4)")
-                        .HasColumnName("extension");
+                        .HasColumnType("nvarchar(4)")
+                        .HasColumnName("Extension");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(10)
-                        .HasColumnType("character varying(10)")
-                        .HasColumnName("firstname");
+                        .HasColumnType("nvarchar(10)")
+                        .HasColumnName("FirstName");
 
                     b.Property<DateTime?>("HireDate")
-                        .HasColumnType("timestamp without time zone")
-                        .HasColumnName("hiredate");
+                        .HasColumnType("datetime")
+                        .HasColumnName("HireDate");
 
                     b.Property<string>("HomePhone")
                         .HasMaxLength(24)
-                        .HasColumnType("character varying(24)")
-                        .HasColumnName("homephone");
+                        .HasColumnType("nvarchar(24)")
+                        .HasColumnName("HomePhone");
 
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("character varying(20)")
-                        .HasColumnName("lastname");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnName("LastName");
 
                     b.Property<string>("Notes")
-                        .HasColumnType("text")
-                        .HasColumnName("notes");
+                        .HasColumnType("ntext")
+                        .HasColumnName("Notes");
 
                     b.Property<byte[]>("Photo")
-                        .HasColumnType("bytea")
-                        .HasColumnName("photo");
+                        .HasColumnType("varbinary(max)")
+                        .HasColumnName("Photo");
 
                     b.Property<string>("PhotoPath")
                         .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
-                        .HasColumnName("photopath");
+                        .HasColumnType("nvarchar(255)")
+                        .HasColumnName("PhotoPath");
 
                     b.Property<string>("PostalCode")
                         .HasMaxLength(10)
-                        .HasColumnType("character varying(10)")
-                        .HasColumnName("postalcode");
+                        .HasColumnType("nvarchar(10)")
+                        .HasColumnName("PostalCode");
 
                     b.Property<string>("Region")
                         .HasMaxLength(15)
-                        .HasColumnType("character varying(15)")
-                        .HasColumnName("region");
+                        .HasColumnType("nvarchar(15)")
+                        .HasColumnName("Region");
 
                     b.Property<int?>("ReportsTo")
-                        .HasColumnType("integer")
-                        .HasColumnName("reportsto");
+                        .HasColumnType("int")
+                        .HasColumnName("ReportsTo");
 
                     b.Property<string>("Title")
                         .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
-                        .HasColumnName("title");
+                        .HasColumnType("nvarchar(30)")
+                        .HasColumnName("Title");
 
                     b.Property<string>("TitleOfCourtesy")
                         .HasMaxLength(25)
-                        .HasColumnType("character varying(25)")
-                        .HasColumnName("titleofcourtesy");
+                        .HasColumnType("nvarchar(25)")
+                        .HasColumnName("TitleOfCourtesy");
 
                     b.Property<int>("rowversion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("int")
                         .HasColumnName("rowversion")
                         .HasDefaultValueSql("(0)");
 
                     b.HasKey("EmployeeID")
-                        .HasName("pk_employees");
+                        .HasName("PK_Employees");
 
                     b.HasIndex("LastName")
-                        .HasDatabaseName("ix_employees_lastname");
+                        .HasDatabaseName("LastName");
 
                     b.HasIndex("PostalCode")
-                        .HasDatabaseName("ix_employees_postalcode");
+                        .HasDatabaseName("PostalCode");
 
                     b.HasIndex("ReportsTo")
-                        .HasDatabaseName("ix_employees_reportsto");
+                        .HasDatabaseName("IX_Employees_ReportsTo");
 
-                    b.ToTable("employees");
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("RGF.Demo.Northwind.Models.Order_Details", b =>
                 {
                     b.Property<int>("OrderId")
-                        .HasColumnType("integer")
-                        .HasColumnName("orderid");
+                        .HasColumnType("int")
+                        .HasColumnName("OrderID");
 
                     b.Property<int>("ProductID")
-                        .HasColumnType("integer")
-                        .HasColumnName("productid");
+                        .HasColumnType("int")
+                        .HasColumnName("ProductID");
 
                     b.Property<float>("Discount")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("real")
-                        .HasColumnName("discount")
+                        .HasColumnName("Discount")
                         .HasDefaultValueSql("(0)");
 
                     b.Property<short>("Quantity")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("smallint")
-                        .HasColumnName("quantity")
+                        .HasColumnName("Quantity")
                         .HasDefaultValueSql("((1))");
 
                     b.Property<decimal>("UnitPrice")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(19,4)")
-                        .HasColumnName("unitprice")
+                        .HasColumnType("money")
+                        .HasColumnName("UnitPrice")
                         .HasDefaultValueSql("(0)");
 
                     b.Property<int>("rowversion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("int")
                         .HasColumnName("rowversion")
                         .HasDefaultValueSql("(0)");
 
                     b.HasKey("OrderId", "ProductID")
-                        .HasName("pk_orderdetails");
+                        .HasName("PK_Order Details");
 
                     b.HasIndex("OrderId")
-                        .HasDatabaseName("ix_ordersorder_details");
+                        .HasDatabaseName("OrdersOrder_Details");
 
                     b.HasIndex("ProductID")
-                        .HasDatabaseName("ix_ordersorder_productsorder_details");
+                        .HasDatabaseName("ProductsOrder_Details");
 
-                    b.ToTable("orderdetails", (string)null);
+                    b.ToTable("Order Details", (string)null);
                 });
 
             modelBuilder.Entity("RGF.Demo.Northwind.Models.Orders", b =>
                 {
                     b.Property<int>("OrderID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("orderid");
+                        .HasColumnType("int")
+                        .HasColumnName("OrderID");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("OrderID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"));
 
                     b.Property<string>("CustomerID")
-                        .HasColumnType("character(5)")
-                        .HasColumnName("customerid");
+                        .HasColumnType("nchar(5)")
+                        .HasColumnName("CustomerID");
 
                     b.Property<int?>("EmployeeID")
-                        .HasColumnType("integer")
-                        .HasColumnName("employeeid");
+                        .HasColumnType("int")
+                        .HasColumnName("EmployeeID");
 
                     b.Property<decimal?>("Freight")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(19,4)")
-                        .HasColumnName("freight")
+                        .HasColumnType("money")
+                        .HasColumnName("Freight")
                         .HasDefaultValueSql("(0)");
 
                     b.Property<DateTime?>("OrderDate")
-                        .HasColumnType("timestamp without time zone")
-                        .HasColumnName("orderdate");
+                        .HasColumnType("datetime")
+                        .HasColumnName("OrderDate");
 
                     b.Property<DateTime?>("RequiredDate")
-                        .HasColumnType("timestamp without time zone")
-                        .HasColumnName("requireddate");
+                        .HasColumnType("datetime")
+                        .HasColumnName("RequiredDate");
 
                     b.Property<string>("ShipAddress")
                         .HasMaxLength(60)
-                        .HasColumnType("character varying(60)")
-                        .HasColumnName("shipaddress");
+                        .HasColumnType("nvarchar(60)")
+                        .HasColumnName("ShipAddress");
 
                     b.Property<string>("ShipCity")
                         .HasMaxLength(15)
-                        .HasColumnType("character varying(15)")
-                        .HasColumnName("shipcity");
+                        .HasColumnType("nvarchar(15)")
+                        .HasColumnName("ShipCity");
 
                     b.Property<string>("ShipCountry")
                         .HasMaxLength(15)
-                        .HasColumnType("character varying(15)")
-                        .HasColumnName("shipcountry");
+                        .HasColumnType("nvarchar(15)")
+                        .HasColumnName("ShipCountry");
 
                     b.Property<string>("ShipName")
                         .HasMaxLength(40)
-                        .HasColumnType("character varying(40)")
-                        .HasColumnName("shipname");
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("ShipName");
 
                     b.Property<string>("ShipPostalCode")
                         .HasMaxLength(10)
-                        .HasColumnType("character varying(10)")
-                        .HasColumnName("shippostalcode");
+                        .HasColumnType("nvarchar(10)")
+                        .HasColumnName("ShipPostalCode");
 
                     b.Property<string>("ShipRegion")
                         .HasMaxLength(15)
-                        .HasColumnType("character varying(15)")
-                        .HasColumnName("shipregion");
+                        .HasColumnType("nvarchar(15)")
+                        .HasColumnName("ShipRegion");
 
                     b.Property<int?>("ShipVia")
-                        .HasColumnType("integer")
-                        .HasColumnName("shipvia");
+                        .HasColumnType("int")
+                        .HasColumnName("ShipVia");
 
                     b.Property<DateTime?>("ShippedDate")
-                        .HasColumnType("timestamp without time zone")
-                        .HasColumnName("shippeddate");
+                        .HasColumnType("datetime")
+                        .HasColumnName("ShippedDate");
 
                     b.Property<int>("rowversion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("int")
                         .HasColumnName("rowversion")
                         .HasDefaultValueSql("(0)");
 
                     b.HasKey("OrderID")
-                        .HasName("pk_orders");
+                        .HasName("PK_Orders");
 
                     b.HasIndex("CustomerID")
-                        .HasDatabaseName("ix_orders_customersorders");
+                        .HasDatabaseName("CustomersOrders");
 
                     b.HasIndex("EmployeeID")
-                        .HasDatabaseName("ix_orders_employeesorders");
+                        .HasDatabaseName("EmployeesOrders");
 
                     b.HasIndex("OrderDate")
-                        .HasDatabaseName("ix_orders_orderdate");
+                        .HasDatabaseName("OrderDate");
 
                     b.HasIndex("ShipPostalCode")
-                        .HasDatabaseName("ix_orders_shippostalcode");
+                        .HasDatabaseName("ShipPostalCode");
 
                     b.HasIndex("ShipVia")
-                        .HasDatabaseName("ix_orders_shippersorders");
+                        .HasDatabaseName("ShippersOrders");
 
                     b.HasIndex("ShippedDate")
-                        .HasDatabaseName("ix_orders_shippeddate");
+                        .HasDatabaseName("ShippedDate");
 
-                    b.ToTable("orders");
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("RGF.Demo.Northwind.Models.Products", b =>
                 {
                     b.Property<int>("ProductID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("productid");
+                        .HasColumnType("int")
+                        .HasColumnName("ProductID");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ProductID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductID"));
 
                     b.Property<int?>("CategoryID")
-                        .HasColumnType("integer")
-                        .HasColumnName("categoryid");
+                        .HasColumnType("int")
+                        .HasColumnName("CategoryID");
 
                     b.Property<bool>("Discontinued")
-                        .HasColumnType("boolean")
-                        .HasColumnName("discontinued");
+                        .HasColumnType("bit")
+                        .HasColumnName("Discontinued");
 
                     b.Property<string>("ProductName")
                         .IsRequired()
                         .HasMaxLength(40)
-                        .HasColumnType("character varying(40)")
-                        .HasColumnName("productname");
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("ProductName");
 
                     b.Property<string>("QuantityPerUnit")
                         .HasMaxLength(20)
-                        .HasColumnType("character varying(20)")
-                        .HasColumnName("quantityperunit");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnName("QuantityPerUnit");
 
                     b.Property<short?>("ReorderLevel")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("smallint")
-                        .HasColumnName("reorderlevel")
+                        .HasColumnName("ReorderLevel")
                         .HasDefaultValueSql("(0)");
 
                     b.Property<int?>("SupplierID")
-                        .HasColumnType("integer")
-                        .HasColumnName("supplierid");
+                        .HasColumnType("int")
+                        .HasColumnName("SupplierID");
 
                     b.Property<decimal?>("UnitPrice")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("numeric(19,4)")
-                        .HasColumnName("unitprice")
+                        .HasColumnType("money")
+                        .HasColumnName("UnitPrice")
                         .HasDefaultValueSql("(0)");
 
                     b.Property<short?>("UnitsInStock")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("smallint")
-                        .HasColumnName("unitsinstock")
+                        .HasColumnName("UnitsInStock")
                         .HasDefaultValueSql("(0)");
 
                     b.Property<short?>("UnitsOnOrder")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("smallint")
-                        .HasColumnName("unitsonorder")
+                        .HasColumnName("UnitsOnOrder")
                         .HasDefaultValueSql("(0)");
 
                     b.Property<int>("rowversion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("int")
                         .HasColumnName("rowversion")
                         .HasDefaultValueSql("(0)");
 
                     b.HasKey("ProductID")
-                        .HasName("pk_products");
+                        .HasName("PK_Products");
 
                     b.HasIndex("CategoryID")
-                        .HasDatabaseName("ix_products_categoryid");
+                        .HasDatabaseName("CategoryID");
 
                     b.HasIndex("ProductName")
-                        .HasDatabaseName("ix_products_productname");
+                        .HasDatabaseName("ProductName");
 
                     b.HasIndex("SupplierID")
-                        .HasDatabaseName("ix_products_suppliersproducts");
+                        .HasDatabaseName("SuppliersProducts");
 
-                    b.ToTable("products");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("RGF.Demo.Northwind.Models.Region", b =>
                 {
                     b.Property<int>("RegionID")
-                        .HasColumnType("integer")
-                        .HasColumnName("regionid");
+                        .HasColumnType("int")
+                        .HasColumnName("RegionID");
 
                     b.Property<string>("RegionDescription")
                         .IsRequired()
-                        .HasColumnType("character(50)")
-                        .HasColumnName("regiondescription");
+                        .HasColumnType("nchar(50)")
+                        .HasColumnName("RegionDescription");
 
                     b.Property<int>("rowversion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("int")
                         .HasColumnName("rowversion")
                         .HasDefaultValueSql("(0)");
 
                     b.HasKey("RegionID")
-                        .HasName("pk_region");
+                        .HasName("PK_Region");
 
-                    b.ToTable("region");
+                    b.ToTable("Region");
                 });
 
             modelBuilder.Entity("RGF.Demo.Northwind.Models.Shippers", b =>
                 {
                     b.Property<int>("ShipperID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("shipperid");
+                        .HasColumnType("int")
+                        .HasColumnName("ShipperID");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ShipperID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ShipperID"));
 
                     b.Property<string>("CompanyName")
                         .IsRequired()
                         .HasMaxLength(40)
-                        .HasColumnType("character varying(40)")
-                        .HasColumnName("companyname");
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("CompanyName");
 
                     b.Property<string>("Phone")
                         .HasMaxLength(24)
-                        .HasColumnType("character varying(24)")
-                        .HasColumnName("phone");
+                        .HasColumnType("nvarchar(24)")
+                        .HasColumnName("Phone");
 
                     b.Property<int>("rowversion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("int")
                         .HasColumnName("rowversion")
                         .HasDefaultValueSql("(0)");
 
                     b.HasKey("ShipperID")
-                        .HasName("pk_shippers");
+                        .HasName("PK_Shippers");
 
-                    b.ToTable("shippers");
+                    b.ToTable("Shippers");
                 });
 
             modelBuilder.Entity("RGF.Demo.Northwind.Models.Suppliers", b =>
                 {
                     b.Property<int>("SupplierID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("supplierid");
+                        .HasColumnType("int")
+                        .HasColumnName("SupplierID");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("SupplierID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SupplierID"));
 
                     b.Property<string>("Address")
                         .HasMaxLength(60)
-                        .HasColumnType("character varying(60)")
-                        .HasColumnName("address");
+                        .HasColumnType("nvarchar(60)")
+                        .HasColumnName("Address");
 
                     b.Property<string>("City")
                         .HasMaxLength(15)
-                        .HasColumnType("character varying(15)")
-                        .HasColumnName("city");
+                        .HasColumnType("nvarchar(15)")
+                        .HasColumnName("City");
 
                     b.Property<string>("CompanyName")
                         .IsRequired()
                         .HasMaxLength(40)
-                        .HasColumnType("character varying(40)")
-                        .HasColumnName("companyname");
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("CompanyName");
 
                     b.Property<string>("ContactName")
                         .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
-                        .HasColumnName("contactname");
+                        .HasColumnType("nvarchar(30)")
+                        .HasColumnName("ContactName");
 
                     b.Property<string>("ContactTitle")
                         .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
-                        .HasColumnName("contacttitle");
+                        .HasColumnType("nvarchar(30)")
+                        .HasColumnName("ContactTitle");
 
                     b.Property<string>("Country")
                         .HasMaxLength(15)
-                        .HasColumnType("character varying(15)")
-                        .HasColumnName("country");
+                        .HasColumnType("nvarchar(15)")
+                        .HasColumnName("Country");
 
                     b.Property<string>("Fax")
                         .HasMaxLength(24)
-                        .HasColumnType("character varying(24)")
-                        .HasColumnName("fax");
+                        .HasColumnType("nvarchar(24)")
+                        .HasColumnName("Fax");
 
                     b.Property<string>("HomePage")
-                        .HasColumnType("text")
-                        .HasColumnName("homepage");
+                        .HasColumnType("ntext")
+                        .HasColumnName("HomePage");
 
                     b.Property<string>("Phone")
                         .HasMaxLength(24)
-                        .HasColumnType("character varying(24)")
-                        .HasColumnName("phone");
+                        .HasColumnType("nvarchar(24)")
+                        .HasColumnName("Phone");
 
                     b.Property<string>("PostalCode")
                         .HasMaxLength(10)
-                        .HasColumnType("character varying(10)")
-                        .HasColumnName("postalcode");
+                        .HasColumnType("nvarchar(10)")
+                        .HasColumnName("PostalCode");
 
                     b.Property<string>("Region")
                         .HasMaxLength(15)
-                        .HasColumnType("character varying(15)")
-                        .HasColumnName("region");
+                        .HasColumnType("nvarchar(15)")
+                        .HasColumnName("Region");
 
                     b.Property<int>("rowversion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("int")
                         .HasColumnName("rowversion")
                         .HasDefaultValueSql("(0)");
 
                     b.HasKey("SupplierID")
-                        .HasName("pk_suppliers");
+                        .HasName("PK_Suppliers");
 
                     b.HasIndex("CompanyName")
-                        .HasDatabaseName("ix_suppliers_companyname");
+                        .HasDatabaseName("CompanyName");
 
                     b.HasIndex("PostalCode")
-                        .HasDatabaseName("ix_suppliers_postalcode");
+                        .HasDatabaseName("PostalCode");
 
-                    b.ToTable("suppliers");
+                    b.ToTable("Suppliers");
                 });
 
             modelBuilder.Entity("RGF.Demo.Northwind.Models.Territories", b =>
                 {
                     b.Property<string>("TerritoryID")
                         .HasMaxLength(20)
-                        .HasColumnType("character varying(20)")
-                        .HasColumnName("territoryid");
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnName("TerritoryID");
 
                     b.Property<int>("RegionID")
-                        .HasColumnType("integer")
-                        .HasColumnName("regionid");
+                        .HasColumnType("int")
+                        .HasColumnName("RegionID");
 
                     b.Property<string>("TerritoryDescription")
                         .IsRequired()
-                        .HasColumnType("character(50)")
-                        .HasColumnName("territorydescription");
+                        .HasColumnType("nchar(50)")
+                        .HasColumnName("TerritoryDescription");
 
                     b.Property<int>("rowversion")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("int")
                         .HasColumnName("rowversion")
                         .HasDefaultValueSql("(0)");
 
                     b.HasKey("TerritoryID")
-                        .HasName("pk_territories");
+                        .HasName("PK_Territories");
+
+                    SqlServerKeyBuilderExtensions.IsClustered(b.HasKey("TerritoryID"), false);
 
                     b.HasIndex("RegionID")
-                        .HasDatabaseName("ix_territories_regionid");
+                        .HasDatabaseName("IX_Territories_RegionID");
 
-                    b.ToTable("territories");
+                    b.ToTable("Territories");
                 });
 
             modelBuilder.Entity("Recrovit.RecroGridFramework.Data.vRecroSec", b =>
                 {
                     b.Property<int>("ObjectPermissionId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("objectpermissionid");
+                        .HasColumnType("int")
+                        .HasColumnName("ObjectPermissionId");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ObjectPermissionId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ObjectPermissionId"));
 
                     b.Property<string>("ObjectKey")
                         .HasMaxLength(128)
-                        .HasColumnType("character varying(128)")
-                        .HasColumnName("objectkey");
+                        .HasColumnType("nvarchar(128)")
+                        .HasColumnName("ObjectKey");
 
                     b.Property<string>("ObjectName")
                         .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
-                        .HasColumnName("objectname");
+                        .HasColumnType("nvarchar(255)")
+                        .HasColumnName("ObjectName");
 
                     b.HasKey("ObjectPermissionId")
-                        .HasName("pk_vrecrosec");
+                        .HasName("PK_vRecroSec");
 
-                    b.ToTable("vrecrosec", null, t =>
+                    b.ToTable("vRecroSec", null, t =>
                         {
                             t.ExcludeFromMigrations();
                         });
@@ -764,32 +776,32 @@ namespace RGF.Demo.Northwind.Data.Migrations.PostgreSQL
                 {
                     b.Property<int>("FEPId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("fepid");
+                        .HasColumnType("int")
+                        .HasColumnName("FEPId");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("FEPId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FEPId"));
 
                     b.Property<int>("EntityId")
-                        .HasColumnType("integer")
-                        .HasColumnName("entityid");
+                        .HasColumnType("int")
+                        .HasColumnName("EntityId");
 
                     b.Property<int>("FEPType")
-                        .HasColumnType("integer")
-                        .HasColumnName("feptype");
+                        .HasColumnType("int")
+                        .HasColumnName("FEPType");
 
                     b.Property<string>("Key1")
                         .HasMaxLength(128)
-                        .HasColumnType("character varying(128)")
-                        .HasColumnName("key1");
+                        .HasColumnType("nvarchar(128)")
+                        .HasColumnName("Key1");
 
                     b.Property<int>("TransactionId")
-                        .HasColumnType("integer")
-                        .HasColumnName("transactionid");
+                        .HasColumnType("int")
+                        .HasColumnName("TransactionId");
 
                     b.HasKey("FEPId")
-                        .HasName("pk_vrecrosec_fep");
+                        .HasName("PK_vRecroSec_FEP");
 
-                    b.ToTable("vrecrosec_fep", null, t =>
+                    b.ToTable("vRecroSec_FEP", null, t =>
                         {
                             t.ExcludeFromMigrations();
                         });
@@ -801,13 +813,13 @@ namespace RGF.Demo.Northwind.Data.Migrations.PostgreSQL
                         .WithMany("CustomerCustomerDemo")
                         .HasForeignKey("CustomerID")
                         .IsRequired()
-                        .HasConstraintName("fk_customercustomerdemo_customers");
+                        .HasConstraintName("FK_CustomerCustomerDemo_Customers");
 
                     b.HasOne("RGF.Demo.Northwind.Models.CustomerDemographics", "CustomerType")
                         .WithMany("CustomerCustomerDemo")
                         .HasForeignKey("CustomerTypeID")
                         .IsRequired()
-                        .HasConstraintName("fk_customercustomerdemo");
+                        .HasConstraintName("FK_CustomerCustomerDemo");
 
                     b.Navigation("Customer");
 
@@ -820,13 +832,13 @@ namespace RGF.Demo.Northwind.Data.Migrations.PostgreSQL
                         .WithMany("EmployeeTerritories")
                         .HasForeignKey("EmployeeID")
                         .IsRequired()
-                        .HasConstraintName("fk_employeeterritories_employees");
+                        .HasConstraintName("FK_EmployeeTerritories_Employees");
 
                     b.HasOne("RGF.Demo.Northwind.Models.Territories", "Territories")
                         .WithMany("EmployeeTerritories")
                         .HasForeignKey("TerritoryID")
                         .IsRequired()
-                        .HasConstraintName("fk_employeeterritories_territories");
+                        .HasConstraintName("FK_EmployeeTerritories_Territories");
 
                     b.Navigation("Employees");
 
@@ -838,7 +850,7 @@ namespace RGF.Demo.Northwind.Data.Migrations.PostgreSQL
                     b.HasOne("RGF.Demo.Northwind.Models.Employees", "Employees2")
                         .WithMany("Employees1")
                         .HasForeignKey("ReportsTo")
-                        .HasConstraintName("fk_employees_employees");
+                        .HasConstraintName("FK_Employees_Employees");
 
                     b.Navigation("Employees2");
                 });
@@ -849,13 +861,13 @@ namespace RGF.Demo.Northwind.Data.Migrations.PostgreSQL
                         .WithMany("Order_Details")
                         .HasForeignKey("OrderId")
                         .IsRequired()
-                        .HasConstraintName("fk_order_details_orders");
+                        .HasConstraintName("FK_Order_Details_Orders");
 
                     b.HasOne("RGF.Demo.Northwind.Models.Products", "Products")
                         .WithMany("Order_Details")
                         .HasForeignKey("ProductID")
                         .IsRequired()
-                        .HasConstraintName("fk_order_details_products");
+                        .HasConstraintName("FK_Order_Details_Products");
 
                     b.Navigation("Orders");
 
@@ -867,17 +879,17 @@ namespace RGF.Demo.Northwind.Data.Migrations.PostgreSQL
                     b.HasOne("RGF.Demo.Northwind.Models.Customers", "Customers")
                         .WithMany("Orders")
                         .HasForeignKey("CustomerID")
-                        .HasConstraintName("fk_orders_customers");
+                        .HasConstraintName("FK_Orders_Customers");
 
                     b.HasOne("RGF.Demo.Northwind.Models.Employees", "Employees")
                         .WithMany("Orders")
                         .HasForeignKey("EmployeeID")
-                        .HasConstraintName("fk_orders_employees");
+                        .HasConstraintName("FK_Orders_Employees");
 
                     b.HasOne("RGF.Demo.Northwind.Models.Shippers", "Shippers")
                         .WithMany("Orders")
                         .HasForeignKey("ShipVia")
-                        .HasConstraintName("fk_orders_shippers");
+                        .HasConstraintName("FK_Orders_Shippers");
 
                     b.Navigation("Customers");
 
@@ -891,12 +903,12 @@ namespace RGF.Demo.Northwind.Data.Migrations.PostgreSQL
                     b.HasOne("RGF.Demo.Northwind.Models.Categories", "Categories")
                         .WithMany("Products")
                         .HasForeignKey("CategoryID")
-                        .HasConstraintName("fk_products_categories");
+                        .HasConstraintName("FK_Products_Categories");
 
                     b.HasOne("RGF.Demo.Northwind.Models.Suppliers", "Suppliers")
                         .WithMany("Products")
                         .HasForeignKey("SupplierID")
-                        .HasConstraintName("fk_products_suppliers");
+                        .HasConstraintName("FK_Products_Suppliers");
 
                     b.Navigation("Categories");
 
@@ -909,7 +921,7 @@ namespace RGF.Demo.Northwind.Data.Migrations.PostgreSQL
                         .WithMany("Territories")
                         .HasForeignKey("RegionID")
                         .IsRequired()
-                        .HasConstraintName("fk_territories_region");
+                        .HasConstraintName("FK_Territories_Region");
 
                     b.Navigation("Region");
                 });
