@@ -197,11 +197,16 @@ public class BaseDbContextPool : BaseDbContext
     public BaseDbContextPool(DbContextOptions options) : base(options) { }
 }
 
-//Add-Migration RGF.Demo.Northwind_v1 -Context BaseDbContextMigrOracle -OutputDir Data\Migrations\Oracle
+/*Install-Package Microsoft.EntityFrameworkCore.Tools*/
+
+/*Install-Package Oracle.EntityFrameworkCore*/
+/*Add-Migration RGF.Demo.Northwind_v1 -Context BaseDbContextMigrOracle -OutputDir Data\Migrations\Oracle*/
 public class BaseDbContextMigrOracle : BaseDbContext { }
 
-//Add-Migration RGF.Demo.Northwind_v1 -Context BaseDbContextMigrPostgreSQL -OutputDir Data\Migrations\PostgreSQL
+/*Install-Package Npgsql.EntityFrameworkCore.PostgreSQL*/
+/*Add-Migration RGF.Demo.Northwind_v1 -Context BaseDbContextMigrPostgreSQL -OutputDir Data\Migrations\PostgreSQL*/
 public class BaseDbContextMigrPostgreSQL : BaseDbContext { }
 
-//Add-Migration RGF.Demo.Northwind_v1 -Context BaseDbContextMigrSQLServer -OutputDir Data\Migrations\SQLServer
+/*Install-Package Microsoft.EntityFrameworkCore.SqlServer*/
+/*Add-Migration RGF.Demo.Northwind_v1 -Context BaseDbContextMigrSQLServer -OutputDir Data\Migrations\SQLServer*/
 public class BaseDbContextMigrSQLServer : BaseDbContext { }
