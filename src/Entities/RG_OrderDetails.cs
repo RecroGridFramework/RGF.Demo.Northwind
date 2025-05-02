@@ -19,7 +19,7 @@ public partial class RG_OrderDetails : RgfCore<Order_Details>
         //    messages.AddFormErrorMessage("Server-side validation");
         //}
 
-        await OrderDetailValidation.ValidateAsync(RgfDynamicDictionary.Create(dataRec, StringComparer.OrdinalIgnoreCase), messages, RecroDict.RecroDictService);
+        await OrderDetailValidation.ValidateAsync(RgfDynamicDictionary.Create(dataRec, StringComparer.OrdinalIgnoreCase), messages, RecroDictService);
         return await base.OnValidationAsync(context, dataRec, param, messages);
     }
 }
