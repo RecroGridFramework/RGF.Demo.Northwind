@@ -24,7 +24,7 @@ public partial class BaseDbContext : NorthwindDbContext
 
         if (!optionsBuilder.IsConfigured)
         {
-            var dbType = RGDataContext.ConnectionNameDBType;
+            var dbType = RGDataContext.DatabaseTypeFromConnectionName;
             switch (dbType)
             {
                 case DBTypeEnum.SQLServer:
@@ -78,7 +78,7 @@ public static class WebApplicationBuilderExtensions
     public static void AddBaseDbContext(this WebApplicationBuilder builder)
     {
         IServiceCollection services = builder.Services;
-        var dbType = RGDataContext.ConnectionNameDBType;
+        var dbType = RGDataContext.DatabaseTypeFromConnectionName;
         switch (dbType)
         {
             case DBTypeEnum.SQLServer:
@@ -159,7 +159,7 @@ public static class WebApplicationBuilderExtensions
     {
         using (var serviceScope = app.ApplicationServices.CreateScope())
         {
-            var dbType = Recrovit.RecroGridFramework.Data.RGDataContext.ConnectionNameDBType;
+            var dbType = RGDataContext.DatabaseTypeFromConnectionName;
             BaseDbContext ctx = null;
             switch (dbType)
             {
